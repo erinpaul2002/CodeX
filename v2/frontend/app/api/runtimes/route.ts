@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import piston from 'piston-client';
 
 // Create piston client with server URL from environment variables
