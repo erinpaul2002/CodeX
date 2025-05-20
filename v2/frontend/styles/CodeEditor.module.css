@@ -1,0 +1,96 @@
+.codeEditor pre {
+  margin: 0;
+  padding: 0;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+}
+
+.lineNumber {
+  opacity: 0.5;
+  user-select: none;
+  margin-right: 12px;
+  display: inline-block;
+  text-align: right;
+  width: 20px;
+}
+
+.codeTokenKeyword {
+  color: #569cd6;
+}
+
+.codeTokenOperator {
+  color: white;
+}
+
+.codeTokenString {
+  color: #ce9178;
+}
+
+.codeTokenFunction {
+  color: #dcdcaa;
+}
+
+.codeTokenComment {
+  color: #6a9955;
+}
+
+.codeTokenVariable {
+  color: #9cdcfe;
+}
+
+.editorDots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.editorDots div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminalBg {
+  background-color: #1e1e1e;
+}
+
+.codeLineAppear {
+  animation: codeAppear 0.5s ease-out forwards;
+}
+
+.codeWrapper {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes codeAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.editorContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e1e1e;
+}
+
+.windowControls {
+  display: flex;
+  gap: 6px;
+  margin-right: 12px;
+}
+
+.windowDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}

@@ -1,0 +1,28 @@
+.editorContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: rgba(20, 20, 40, 0.85);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(99, 102, 241, 0.15);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  background-clip: padding-box;
+}
+
+/* Custom code font and highlight for Monaco */
+.editorWrapper :global(.monaco-editor) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 15px !important;
+}
+
+.editorWrapper :global(.monaco-editor .current-line) {
+  background: linear-gradient(90deg, rgba(244, 114, 182, 0.33) 0%, rgba(162, 28, 175, 0.2) 100%);
+  box-shadow: 0 0 8px rgba(162, 28, 175, 0.27);
+}
+
+.editorWrapper :global(.monaco-editor .margin) {
+  background: transparent;
+}

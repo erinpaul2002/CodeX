@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "xterm/css/xterm.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a14;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: linear-gradient(120deg, #4f46e5 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease-in-out infinite;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  height: 100vh;
+  overflow: hidden;
+}
+
+@keyframes gradient-move {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 44, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+/* Select dropdown style */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a5b4fc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+}
+
+/* Enhanced dropdown styling */
+select option {
+  background-color: #1e1e3a;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 8px;
+}
+
+/* For Firefox */
+select {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.5) rgba(30, 30, 58, 0.8);
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  background: rgba(30, 30, 58, 0.8);
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: rgba(99, 102, 241, 0.5);
+  border-radius: 4px;
+}
+
+/* Active state for dropdown */
+select:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.25);
+}
+
+/* Selected option highlight */
+select option:checked {
+  background: linear-gradient(90deg, rgba(79, 70, 229, 0.4) 0%, rgba(139, 92, 246, 0.4) 100%);
+}
+
+/* Editor container with glassmorphism effect */
+.editor-container {
+  background: rgba(20, 20, 40, 0.85);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(99, 102, 241, 0.15);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+/* Terminal styling */
+.terminal-container {
+  background: rgba(10, 10, 20, 0.92);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px 0 rgba(139, 92, 246, 0.15);
+  border: 1.5px solid rgba(139, 92, 246, 0.15);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+/* Fun neon glow for buttons */
+.btn-glow {
+  background: linear-gradient(90deg, #6366f1 0%, #a21caf 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  box-shadow: 0 0 8px #a21caf88, 0 0 2px #6366f1cc;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+.btn-glow:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 16px #a21cafcc, 0 0 4px #6366f1ee;
+}
+
+/* Animated focus ring for inputs */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #a5b4fc, 0 0 8px #a21caf55;
+}
+
+/* Custom code font and highlight for Monaco */
+.monaco-editor, .xterm {
+  font-family: var(--font-mono) !important;
+  font-size: 15px !important;
+}
+.monaco-editor .current-line {
+  background: linear-gradient(90deg, #6366f133 0%, #a21caf22 100%);
+}
+.monaco-editor .margin {
+  background: transparent;
+}
+
+/* Colorful resizer bar */
+.resizer-bar {
+  height: 8px;
+  background: linear-gradient(90deg, #6366f1 0%, #a21caf 100%);
+  border-radius: 999px;
+  margin: 0.5rem 0;
+  cursor: ns-resize;
+  box-shadow: 0 2px 8px #a21caf33;
+  transition: background 0.2s;
+}
+.resizer-bar:hover {
+  background: linear-gradient(90deg, #a21caf 0%, #6366f1 100%);
+}
+
+/* Fun animated dots for window controls */
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0 0.5rem;
+}
+.window-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  animation: pulse-glow 2s infinite alternate;
+}
+.window-dot.red { background: #ef4444; animation-delay: 0s; }
+.window-dot.yellow { background: #facc15; animation-delay: 0.5s; }
+.window-dot.green { background: #22c55e; animation-delay: 1s; }
+
+/* Remove rainbow border effect */
+.editor-container, .terminal-container {
+  position: relative;
+  border: 2px solid rgba(99,102,241,0.18); /* subtle border */
+  background-clip: padding-box;
+}
+.editor-container::before, .terminal-container::before {
+  content: none !important;
+}
+
+/* Fun header for editor/terminal */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(99,102,241,0.12);
+  border-bottom: 1.5px solid rgba(139,92,246,0.15);
+  border-radius: 1.25rem 1.25rem 0 0;
+  z-index: 2;
+  position: relative;
+  color: #fff;
+  text-shadow: 0 2px 8px #6366f1cc;
+}
+
+.panel-header .emoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 4px #a21caf88);
+  animation: bounce 1.2s infinite alternate;
+}
+@keyframes bounce {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-6px);}
+}
+
+/* Add a subtle glow to the active line in Monaco */
+.monaco-editor .current-line {
+  background: linear-gradient(90deg, #f472b655 0%, #a21caf33 100%);
+  box-shadow: 0 0 8px #a21caf44;
+}
+
+/* Terminal prompt style */
+.xterm .xterm-rows {
+  font-family: var(--font-mono);
+  font-size: 1.1em;
+  color: #a5b4fc;
+  text-shadow: 0 2px 8px #6366f1cc;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Hero component positioning */
+.hero-centered {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  max-width: 36rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Navbar component positioning */
+.navbar-centered {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  display: flex;
+  align-items: center;
+}

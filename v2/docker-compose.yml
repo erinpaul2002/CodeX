@@ -1,0 +1,36 @@
+version: '3.2'
+
+services:
+    api:
+        image: ghcr.io/engineer-man/piston
+        container_name: piston_api
+        restart: always
+        privileged: true
+        ports:
+            - 2000:2000
+        volumes:
+            - ./data/piston/packages:/piston/packages
+        tmpfs:
+            - /tmp:exec
+        networks:
+            - codex-network
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: codex_frontend
+        restart: always
+        ports:
+            - 3000:3000
+        environment:
+            - PISTON_URL=http://api:2000
+            - PISTON_WS_URL=ws://api:2000/ws
+            - NEXT_PUBLIC_PISTON_API_URL=http://localhost:2000/api/v2
+        depends_on:
+            - api
+        networks:
+            - codex-network
+
+networks:
+    codex-network:

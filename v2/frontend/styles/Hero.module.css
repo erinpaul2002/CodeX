@@ -1,0 +1,46 @@
+.heroContainer {
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .heroContainer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.heroTitle {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2.5rem;
+}
+
+.heroDescription {
+  color: rgb(229, 231, 235);
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.heroButton {
+  border-radius: 9999px;
+  padding: 1.5rem 2.5rem;
+  background-image: linear-gradient(to right, #2563eb, #3b82f6);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  transition: background-image 0.3s ease;
+}
+
+.heroButton:hover {
+  background-image: linear-gradient(to right, #1d4ed8, #2563eb);
+}
+
+.buttonIcon {
+  margin-left: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}

@@ -1,0 +1,91 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: #0a0a14;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  min-height: 150px;
+}
+
+.terminalContainer {
+  background: rgba(10, 10, 20, 0.92);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px 0 rgba(139, 92, 246, 0.15);
+  border: 1.5px solid rgba(139, 92, 246, 0.15);
+  overflow: hidden;
+  position: relative;
+  background-clip: padding-box;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(99,102,241,0.12);
+  border-bottom: 1.5px solid rgba(139,92,246,0.15);
+  border-radius: 1.25rem 1.25rem 0 0;
+  z-index: 2;
+  position: relative;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(99,102,241,0.8);
+}
+
+.headerEmoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 4px rgba(162, 28, 175, 0.53));
+  animation: bounce 1.2s infinite alternate;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-6px);}
+}
+
+/* Terminal content styles - fix by combining with local class */
+.xtermWrapper :global(.xterm) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 15px !important;
+}
+
+.xtermWrapper :global(.xterm-rows) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.1em;
+  color: #a5b4fc;
+  text-shadow: 0 2px 8px rgba(99,102,241,0.8);
+}
+
+/* Window controls for terminal */
+.windowControls {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+.windowDot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+.red { background: #ef4444; animation-delay: 0s; }
+.yellow { background: #facc15; animation-delay: 0.5s; }
+.green { background: #22c55e; animation-delay: 1s; }
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+}
